@@ -11,7 +11,8 @@ android {
         targetSdkVersion 28
 
         python {
-            buildPython("D:/Programs/Python/Python38/python.exe")
+            // CI/Linux: 使用系统 python3（原硬编码 Windows 路径导致 Linux 构建失败）
+            buildPython(findProperty("buildPython") ?: "python3")
             pip {
                 install "lxml"
                 install "ujson"
