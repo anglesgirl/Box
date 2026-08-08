@@ -23,6 +23,7 @@ jobs:
       - name: Build APK
         run: |
           chmod +x gradlew
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
           ./gradlew assembleRelease --no-daemon
 
       - name: Upload APK
